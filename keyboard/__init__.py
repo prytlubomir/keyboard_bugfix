@@ -1066,7 +1066,7 @@ def read_hotkey(suppress=True):
         # "ctrl+shift+p"
     """
     queue = _queue.Queue()
-    fn = lambda e: queue.put(e) or e.event_type == KEY_DOWN
+    fn = lambda e: queue.put(e) or e.event_type == KEY_DOWN or e.event_type == KEY_UP
     hooked = hook(fn, suppress=suppress)
     while True:
         event = queue.get()
